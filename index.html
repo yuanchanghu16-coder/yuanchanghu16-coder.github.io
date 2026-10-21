@@ -22,12 +22,9 @@
     .hero-copy { max-width:590px; color:var(--muted); font-size:1.1rem; }
     .identity { display:flex; flex-wrap:wrap; gap:9px; margin-top:24px; }
     .tag { border:1px solid #bcbcb8; border-radius:999px; padding:5px 13px; font-size:.88rem; }
-    .portrait { min-height:310px; display:grid; place-items:center; background:var(--soft); border:1px solid var(--line); position:relative; overflow:hidden; }
-    .portrait::before,.portrait::after { content:""; position:absolute; background:#d8d8d4; }
-    .portrait::before { width:230px; height:230px; border-radius:50%; top:-90px; right:-75px; }
-    .portrait::after { width:300px; height:130px; border-radius:50% 50% 0 0; bottom:-45px; left:50%; transform:translateX(-50%); }
-    .portrait-label { position:relative; z-index:1; width:104px; height:104px; display:grid; place-items:center; border-radius:50%; background:#111; color:#fff; font-size:2.5rem; font-weight:800; letter-spacing:-.06em; }
-    .portrait-caption { position:absolute; z-index:2; bottom:14px; right:16px; font-size:.72rem; letter-spacing:.1em; color:#555; }
+    .portrait { aspect-ratio:3/4; border:1px solid var(--line); position:relative; overflow:hidden; background:var(--soft); }
+    .portrait img { display:block; width:100%; height:100%; object-fit:cover; object-position:center 42%; }
+    .portrait-caption { position:absolute; bottom:12px; right:12px; padding:4px 9px; background:#fffE; font-size:.72rem; letter-spacing:.1em; }
     .section { display:grid; grid-template-columns:190px 1fr; gap:36px; padding:34px 0; border-top:1px solid var(--line); }
     .section-label { font-size:.76rem; font-weight:800; letter-spacing:.16em; color:var(--muted); padding-top:7px; }
     h2 { margin:0 0 16px; font-size:1.45rem; letter-spacing:-.02em; }
@@ -40,8 +37,10 @@
     .timeline article { padding:18px 20px; background:var(--white); border:1px solid var(--line); }
     .timeline strong { display:block; margin-bottom:3px; }
     .timeline span { color:var(--muted); font-size:.92rem; }
+    .dogs { display:grid; grid-template-columns:minmax(0,1fr) 240px; gap:28px; align-items:center; }
+    .dogs-photo { display:block; width:100%; aspect-ratio:3/4; object-fit:cover; border:1px solid var(--line); }
     footer { margin-top:30px; padding:26px 0 44px; border-top:1px solid var(--line); color:var(--muted); font-size:.84rem; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
-    @media(max-width:700px) { .wrap { width:min(100% - 28px,560px); } .topbar nav { gap:12px; } .hero { grid-template-columns:1fr; gap:28px; padding:52px 0 42px; } .portrait { min-height:230px; } .section { grid-template-columns:1fr; gap:13px; padding:26px 0; } .bio { padding:23px; } .timeline { grid-template-columns:1fr; } }
+    @media(max-width:700px) { .wrap { width:min(100% - 28px,560px); } .topbar nav { gap:12px; } .hero { grid-template-columns:1fr; gap:28px; padding:52px 0 42px; } .portrait { width:min(100%,360px); margin:auto; } .section { grid-template-columns:1fr; gap:13px; padding:26px 0; } .bio { padding:23px; } .timeline { grid-template-columns:1fr; } .dogs { grid-template-columns:1fr; } .dogs-photo { width:min(100%,360px); margin:auto; } }
   </style>
 </head>
 <body>
@@ -61,9 +60,9 @@
           <span class="tag">大三</span>
         </div>
       </div>
-      <div class="portrait" role="img" aria-label="胡元錩的照片預留位置">
-        <div class="portrait-label">胡</div>
-        <div class="portrait-caption">PHOTO SPACE</div>
+      <div class="portrait">
+        <img src="./profile.jpg" alt="胡元錩在夜間街景中的照片">
+        <div class="portrait-caption">胡元錩</div>
       </div>
     </header>
     <main>
@@ -87,8 +86,15 @@
           </div>
         </div>
       </section>
+      <section class="section" id="dogs">
+        <div class="section-label">03 / MY DOGS</div>
+        <div class="dogs">
+          <div><h2>我的狗狗</h2><p>家裡有兩位可愛的夥伴：一隻柯基和一隻傑克羅素。這張照片記錄了牠們一起出門散步的時光。</p></div>
+          <img class="dogs-photo" src="./dogs.jpg" alt="柯基和傑克羅素一起坐在推車裡">
+        </div>
+      </section>
       <section class="section" id="interests">
-        <div class="section-label">03 / INTERESTS</div>
+        <div class="section-label">04 / INTERESTS</div>
         <div>
           <h2>最近感興趣的事</h2>
           <div class="interests"><span class="interest">活動策劃</span><span class="interest">DJ</span><span class="interest">電玩</span><span class="interest">易經</span><span class="interest">人工智慧</span><span class="interest">柯基與傑克羅素</span></div>
