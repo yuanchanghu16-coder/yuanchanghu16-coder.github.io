@@ -4,48 +4,98 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="胡元錩的個人介紹與學習經歷">
-  <title>個人介紹｜胡元錩</title>
+  <title>胡元錩｜個人網站</title>
   <style>
-    :root { color-scheme: light; --ink:#172b3a; --muted:#566a78; --accent:#167c80; --paper:#f4f7f4; --card:#fff; }
+    :root { color-scheme:light; --ink:#111; --muted:#606060; --line:#dededb; --paper:#f3f3f0; --white:#fff; --soft:#e9e9e5; }
     * { box-sizing:border-box; }
-    body { margin:0; background:var(--paper); color:var(--ink); font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif; line-height:1.8; }
-    .wrap { width:min(900px,calc(100% - 36px)); margin:0 auto; }
-    header { padding:64px 0 36px; }
-    .eyebrow { color:var(--accent); font-weight:700; letter-spacing:.12em; font-size:.86rem; }
-    h1 { font-size:clamp(2.2rem,7vw,4.2rem); line-height:1.2; margin:.35em 0; letter-spacing:-.04em; }
-    .intro { font-size:1.12rem; color:var(--muted); max-width:680px; }
-    main { padding:12px 0 70px; }
-    .card { background:var(--card); border:1px solid #e0e9e3; border-radius:20px; padding:28px; margin:16px 0; box-shadow:0 10px 30px #173b2410; }
-    h2 { font-size:1.3rem; margin:0 0 14px; }
-    .identity { display:flex; gap:12px; flex-wrap:wrap; }
-    .tag { background:#e8f3ef; color:#185c58; border-radius:999px; padding:7px 14px; font-weight:650; }
-    .note { border-left:4px solid #d89e4a; background:#fff8e9; padding:12px 16px; border-radius:0 10px 10px 0; color:#6e5125; }
-    footer { padding:20px 0 45px; color:var(--muted); font-size:.9rem; }
-    @media (max-width:600px) { header { padding-top:42px; } .card { padding:22px; } }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif; line-height:1.85; }
+    a { color:inherit; }
+    .wrap { width:min(1020px,calc(100% - 40px)); margin:0 auto; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; padding:24px 0; border-bottom:1px solid var(--line); font-size:.88rem; }
+    .brand { font-weight:800; letter-spacing:.08em; }
+    .topbar nav { display:flex; gap:22px; color:var(--muted); }
+    .topbar nav a { text-decoration:none; }
+    .hero { display:grid; grid-template-columns:1.5fr .8fr; gap:50px; align-items:center; padding:76px 0 68px; }
+    .eyebrow { font-size:.78rem; font-weight:750; letter-spacing:.2em; color:var(--muted); text-transform:uppercase; }
+    h1 { margin:14px 0 18px; font-size:clamp(3rem,8vw,6rem); line-height:1.08; letter-spacing:-.06em; }
+    .hero-copy { max-width:590px; color:var(--muted); font-size:1.1rem; }
+    .identity { display:flex; flex-wrap:wrap; gap:9px; margin-top:24px; }
+    .tag { border:1px solid #bcbcb8; border-radius:999px; padding:5px 13px; font-size:.88rem; }
+    .portrait { min-height:310px; display:grid; place-items:center; background:var(--soft); border:1px solid var(--line); position:relative; overflow:hidden; }
+    .portrait::before,.portrait::after { content:""; position:absolute; background:#d8d8d4; }
+    .portrait::before { width:230px; height:230px; border-radius:50%; top:-90px; right:-75px; }
+    .portrait::after { width:300px; height:130px; border-radius:50% 50% 0 0; bottom:-45px; left:50%; transform:translateX(-50%); }
+    .portrait-label { position:relative; z-index:1; width:104px; height:104px; display:grid; place-items:center; border-radius:50%; background:#111; color:#fff; font-size:2.5rem; font-weight:800; letter-spacing:-.06em; }
+    .portrait-caption { position:absolute; z-index:2; bottom:14px; right:16px; font-size:.72rem; letter-spacing:.1em; color:#555; }
+    .section { display:grid; grid-template-columns:190px 1fr; gap:36px; padding:34px 0; border-top:1px solid var(--line); }
+    .section-label { font-size:.76rem; font-weight:800; letter-spacing:.16em; color:var(--muted); padding-top:7px; }
+    h2 { margin:0 0 16px; font-size:1.45rem; letter-spacing:-.02em; }
+    .bio { background:var(--white); padding:30px 34px; border:1px solid var(--line); }
+    .bio p { margin:0; }
+    .bio .disclosure { margin-top:22px; padding-top:16px; border-top:1px solid var(--line); font-size:.84rem; color:var(--muted); }
+    .interests { display:flex; flex-wrap:wrap; gap:10px; }
+    .interest { background:#111; color:#fff; padding:10px 16px; font-size:.9rem; }
+    .timeline { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .timeline article { padding:18px 20px; background:var(--white); border:1px solid var(--line); }
+    .timeline strong { display:block; margin-bottom:3px; }
+    .timeline span { color:var(--muted); font-size:.92rem; }
+    footer { margin-top:30px; padding:26px 0 44px; border-top:1px solid var(--line); color:var(--muted); font-size:.84rem; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    @media(max-width:700px) { .wrap { width:min(100% - 28px,560px); } .topbar nav { gap:12px; } .hero { grid-template-columns:1fr; gap:28px; padding:52px 0 42px; } .portrait { min-height:230px; } .section { grid-template-columns:1fr; gap:13px; padding:26px 0; } .bio { padding:23px; } .timeline { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
-  <header class="wrap">
-    <div class="eyebrow">PERSONAL PAGE · 個人頁面</div>
-    <h1>嗨，我是胡元錩</h1>
-    <p class="intro">亞洲大學 AI 系大三，喜歡策劃活動、玩 DJ，也持續探索新的興趣。</p>
-  </header>
-  <main class="wrap">
-    <section class="card" aria-labelledby="about-title">
-      <h2 id="about-title">關於我</h2>
-      <div class="identity">
-        <span class="tag">姓名：胡元錩</span>
-        <span class="tag">匿名 ID：willy022033</span>
-        <span class="tag">班級：AI2A</span>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">YUANCHANG HU</div>
+      <nav aria-label="頁面導覽"><a href="#about">關於</a><a href="#experience">經歷</a><a href="#interests">興趣</a></nav>
+    </div>
+    <header class="hero">
+      <div>
+        <div class="eyebrow">Personal profile · AI2A</div>
+        <h1>胡元錩</h1>
+        <p class="hero-copy">亞洲大學 AI 系大三。喜歡把想法變成活動，也在人工智慧、DJ 表演與易經之間探索新的可能。</p>
+        <div class="identity">
+          <span class="tag">匿名 ID｜willy022033</span>
+          <span class="tag">亞洲大學 AI 系</span>
+          <span class="tag">大三</span>
+        </div>
       </div>
-      <p>你好，我是胡元錩，目前就讀亞洲大學 AI 系大三。國中時就讀明道中學普通科，高中就讀明道商業經營科。高中期間，我曾擔任學生會活動長，參與並籌辦多場活動，也撰寫活動企劃書；此外，我曾擔任學生議會技高三代表，為在校生表達意見、爭取學生權益。現在我擔任系學會會長，持續投入活動規劃與系上事務。平時我喜歡打電動、策劃活動，也喜歡玩 DJ，曾接過一些演出。我最近也在研究易經，對不同領域的新知都保持好奇。至於未來想當神棍嘛——這是開玩笑的，真正的職涯方向還在探索中；目前希望繼續累積 AI、活動企劃與表演相關經驗。</p>
-      <p class="note">此頁由 ChatGPT 協助製作版面與整理文案；內容依本人提供的資料撰寫。沒有使用 AI 生成圖片。</p>
-    </section>
-    <section class="card" aria-labelledby="interest-title">
-      <h2 id="interest-title">最近感興趣的事</h2>
-      <p>目前就讀亞洲大學 AI 系，課外投入活動策劃、DJ 表演與易經研究。</p>
-    </section>
-  </main>
-  <footer class="wrap">胡元錩 · 亞洲大學 AI 系 · 此頁為個人作業網站，內容最後更新：2026</footer>
+      <div class="portrait" role="img" aria-label="胡元錩的照片預留位置">
+        <div class="portrait-label">胡</div>
+        <div class="portrait-caption">PHOTO SPACE</div>
+      </div>
+    </header>
+    <main>
+      <section class="section" id="about">
+        <div class="section-label">01 / ABOUT</div>
+        <div class="bio">
+          <h2>關於我</h2>
+          <p>你好，我是胡元錩，目前就讀亞洲大學 AI 系大三。國中時就讀明道中學普通科，高中就讀明道商業經營科。高中期間，我曾擔任學生會活動長，參與並籌辦多場活動，也撰寫活動企劃書；此外，我曾擔任學生議會技高三代表，為在校生表達意見、爭取學生權益。現在我擔任系學會會長，持續投入活動規劃與系上事務。平時我喜歡打電動、策劃活動，也喜歡玩 DJ，曾接過一些演出。我最近也在研究易經，對不同領域的新知都保持好奇。至於未來想當神棍嘛——這是開玩笑的，真正的職涯方向還在探索中；目前希望繼續累積 AI、活動企劃與表演相關經驗。</p>
+          <p class="disclosure">AI 揭露：使用 ChatGPT 協助設計版面與整理自介文案；未使用 AI 生成圖片。</p>
+        </div>
+      </section>
+      <section class="section" id="experience">
+        <div class="section-label">02 / EXPERIENCE</div>
+        <div>
+          <h2>學習與經歷</h2>
+          <div class="timeline">
+            <article><strong>亞洲大學 AI 系</strong><span>大三｜系學會會長</span></article>
+            <article><strong>明道商業經營科</strong><span>學生會活動長｜學生議會技高三代表</span></article>
+            <article><strong>明道中學普通科</strong><span>國中階段</span></article>
+            <article><strong>活動與表演</strong><span>活動企劃、DJ 演出</span></article>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="interests">
+        <div class="section-label">03 / INTERESTS</div>
+        <div>
+          <h2>最近感興趣的事</h2>
+          <div class="interests"><span class="interest">活動策劃</span><span class="interest">DJ</span><span class="interest">電玩</span><span class="interest">易經</span><span class="interest">人工智慧</span></div>
+        </div>
+      </section>
+    </main>
+    <footer><span>胡元錩 · 亞洲大學 AI 系</span><span>個人網站｜2026</span></footer>
+  </div>
 </body>
 </html>
